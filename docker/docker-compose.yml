@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+    db:
+      image: mysql:8.0.31
+      volumes:
+        - db_data:/var/lib/mysql
+      ports:
+        - "3306:3306"
+      expose:
+        - "3306"
+      environment:
+          MYSQL_ROOT_HOST: "%"
+          MYSQL_ROOT_USER: root
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: walletpicpay_db
+
+
+    phpmyadmin:
+      image: phpmyadmin
+      ports:
+        - "8000:80"
+#      environment:
+#        - PMA_ARBITRARY:1
+#      depends_on:
+#        - db
+
+volumes:
+  db_data:
+
+
+    #https://www:youtube.com/watch?v=dttXo48oXt4&ab_channel=Build%26Run:
