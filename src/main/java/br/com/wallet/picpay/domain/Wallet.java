@@ -19,7 +19,7 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "balance")
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.ZERO;
     @Column(name = "CpfCnpj", nullable = false, unique = true)
     private String cpfCnpj;
     @Column(name = "email", nullable = false)
@@ -34,7 +34,7 @@ public class Wallet {
     //private int id_wallet_type;
 
     public Wallet(WalletDTO dto){
-        this.balance = dto.balance();
+        //this.balance = dto.balance();
         this.cpfCnpj = dto.cpfCnpj();
         this.email = dto.email();
         this.name = dto.name();
