@@ -2,10 +2,7 @@ package br.com.wallet.picpay.domain;
 
 import br.com.wallet.picpay.dto.WalletDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -13,6 +10,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "wallet")
 public class Wallet {
@@ -20,24 +18,28 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name", nullable = false)
-    private String name;
-    @Column(name = "cpfCnpj", nullable = false, unique = true)
+    @Column(name = "balance")
+    private BigDecimal balance;
+    @Column(name = "CpfCnpj", nullable = false, unique = true)
     private String cpfCnpj;
     @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "name", nullable = false)
+    private String name;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "balance", nullable = false)
-    private BigDecimal balance;
-
+    @ManyToOne
+    @JoinColumn(name = "wallet_type_id")
+    private WalletType walletType;
+    //private int id_wallet_type;
 
     public Wallet(WalletDTO dto){
-        this.name = dto.name();
+        this.balance = dto.balance();
         this.cpfCnpj = dto.cpfCnpj();
         this.email = dto.email();
+        this.name = dto.name();
         this.password = dto.password();
-        this.balance = dto.balance();
+        this.walletType = dto.walletType().get();
     }
 
 }
