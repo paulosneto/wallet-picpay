@@ -1,4 +1,4 @@
 package br.com.wallet.picpay.dto;
 
-public record WalletTypeDTO(String description) {
+public record WalletTypeDTO(int id, String description) {
 }
