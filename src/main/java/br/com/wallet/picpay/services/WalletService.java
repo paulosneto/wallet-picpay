@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class WalletService {
 
-
+    @Autowired
     private final WalletRepository repository;
 
     public WalletService(WalletRepository repository){
@@ -32,6 +32,8 @@ public class WalletService {
     }
 
     public List<Wallet> getAll(){
+        List<Wallet> lt = this.repository.findAll();
+
         return this.repository.findAll();
     }
 
