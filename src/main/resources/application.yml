@@ -12,3 +12,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     show-sql: true
+
+  #Mocky que trará
+  #o retorno das requisições
+
+client:
+  authorization:
+    service:
+      url: "https://run.mocky.io/v3/c75e6afe-bd8c-4e64-a5c1-b1141fc31ae5"
+notification:
+  authorization:
+    service:
+      url: "https://run.mocky.io/v3/cf4a0fef-c5c0-49b0-9915-4fd68abaa8f2"
