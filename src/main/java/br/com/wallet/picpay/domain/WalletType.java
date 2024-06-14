@@ -49,8 +49,8 @@ public class WalletType {
     }
 
     public enum Enum{
-        USER(1, "user"),
-        MERCHANT(2, "merchant");
+        USER(1, "USER"),
+        MERCHANT(2, "MERCHANT");
 
         Enum(int id, String description) {
             this.id = id;
